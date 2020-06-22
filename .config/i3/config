@@ -1,0 +1,76 @@
+###############################################################################
+#
+#   Arquivo de configuração do i3wm, criado por Gabe
+#
+#   Versão: i3 config (V1.0)
+#
+###############################################################################
+
+
+
+###############################################################################
+#
+#   Tecla Mod
+#
+###############################################################################
+set $ mod Mod4
+
+
+
+###############################################################################
+# 
+#     Estilização do i3wm
+#
+###############################################################################
+
+# Fonte da interface.
+font pango:Verdana : 12
+
+
+# Executando Polybar.
+exec --no-startup-id  ~/.config/polybar/launch.sh
+exec --no-startup-id picom
+exec wal -i ~/Wallpapers
+
+
+# Barra de título e bordas da janela.
+for_window [class=".*"] border normal
+title_align center
+hide_edge_borders both
+
+
+#Cores da interface.
+# class                 border    backgr    text      indicator   child_border
+client.focused          #4B088AEE #4B088AEE #ffffff   #2e9ef4     #4B088AEE
+client.focused_inactive #4B088AEE #4B088AEE #ffffff   #484e50     #4B088AEE
+client.unfocused        #5F04B4AA #5F04B4AA #ffffffAA #292d2e     #5F04B4AA
+client.urgent           #2f343a   #900000   #ffffff   #900000     #900000
+client.placeholder      #000000   #0c0c0c   #ffffff   #000000     #0c0c0c
+client.background       #ffffff
+
+
+# Gaps
+smart_gaps on
+smart_borders on
+gaps inner 15
+gaps outer 5
+
+
+
+###############################################################################
+# 
+#     Keyblinds para o controle do sistema
+#
+###############################################################################
+
+# Controle do volume com PulseAudio (pactl)
+# ** set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+
+# Capturaando screenshots com gnome-screenshot 
+bindsym Print exec gnome-screenshot -i 
+bindsym $mod+Print exec gnome-screenshot -a
