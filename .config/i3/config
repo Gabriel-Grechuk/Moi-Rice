@@ -13,7 +13,7 @@
 #   Tecla Mod
 #
 ###############################################################################
-set $ mod Mod4
+set $mod Mod4
 
 
 
@@ -71,6 +71,172 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 
-# Capturaando screenshots com gnome-screenshot 
-bindsym Print exec gnome-screenshot -i 
+# Capturaando screenshots com gnome-screenshot
+bindsym Print exec gnome-screenshot -i
 bindsym $mod+Print exec gnome-screenshot -a
+
+
+# Iniciando o controle de Wifi com nm-applet
+exec --no-startup-id nm-applet
+
+
+
+###############################################################################
+#
+#     Keysbinds para configurações do i3.
+#
+###############################################################################
+
+# Suspesão e bloqueio de tela.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+
+# Modificador de janela flutuante.
+floating_modifier $mod
+
+
+# Iniciando terminal com Mod+Enter (Alacritty)
+bindsym $mod+Return exec alacritty
+
+
+# Iniciando Rofi
+bindsym $mod+d exec rofi -show run
+
+
+# Fecha a janela selecionada.
+bindsym $mod+Shift+q kill
+
+
+# Mudado o foco da janela. 
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+
+# Movendo janela em foco.
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+# Arranjar em orientação horizontal.
+bindsym $mod+h split h
+
+
+# Arranjar janelas em modo vertical.
+bindsym $mod+v split v
+
+
+# Coloca janelas em full screen.
+bindsym $mod+f fullscreen toggle
+
+
+# Muda a forma de arranjo dos containers.
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+
+# Ativa a janela fixa ou flutuando.
+bindsym $mod+Shift+space floating toggle
+
+
+# Muda o foco entre janelas fixas e flutuantes.
+bindsym $mod+space focus mode_toggle
+
+
+# Foca no conteiner pai.
+bindsym $mod+a focus parent
+
+
+# Declarando as áreas de trabalhos em variáveis.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+
+# Mudando entre áreas de trabalho.
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+
+# Move a janela focada para outra área de trabalho.
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+
+# Racarrega o arquivo de configurações.
+bindsym $mod+Shift+c reload
+
+
+# Reinicia a sessão do i3 (mantendo sua sessão no xorg).
+bindsym $mod+Shift+r restart
+
+
+# Encerra o i3 saindo do xorg.
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
+# Redimensiona a janela (da pra utilizar o mouse também).
+mode "resize" {
+
+        # Ao entrar no mode de redimensionamento as teclas são automaticamnete
+        # carregadas 
+        #
+        # Cada direção aumenta a janenela em 10 pxs ou ptts
+        #
+        # Funciona com as flexas também.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # Voltando ao normal.
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
