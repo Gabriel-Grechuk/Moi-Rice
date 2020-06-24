@@ -30,13 +30,12 @@ font pango:Verdana : 12
 # Executando Polybar.
 exec --no-startup-id  ~/.config/polybar/launch.sh
 exec --no-startup-id picom
-exec wal -i ~/Wallpapers
+exec feh --bg-fill --randomize .wallpapers/*
 
 
 # Barra de título e bordas da janela.
 for_window [class=".*"] border normal
-title_align center
-hide_edge_borders both
+
 
 
 #Cores da interface.
