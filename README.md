@@ -8,7 +8,7 @@ Por favor, mantenha em mente que esse é um projeto feito apenas por diversão e
 
 Mas fique à vontade para implementa-lo em seu próprio dispositivo!
 
-![V1.0 Screenshot](Screenshots/V1.0-Screenshot.png)
+![V1.0 Screenshot](/Screenshots/V0.1-Screenshot.png)
 
 
 ## Dependências.
@@ -30,6 +30,6 @@ Vou linkar os seus respectivos locais na AUR para caso você esteja utilizando o
 
 
 ## Todo List
-[x] Configurar o i3-gaps para uma estética agradável.
-[ ] Configurar a Polybar para combinar com a estética e adicionar módulos úteis ao usuário.
-[ ] Configurar o Picom 
+- [x] Configurar o i3-gaps para uma estética agradável.
+- [ ] Configurar a Polybar para combinar com a estética e adicionar módulos úteis ao usuário.
+- [ ] Configurar o Picom 
